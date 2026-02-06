@@ -1,1 +1,194 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Propose Day ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* glow overlay */
+body::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top,#ffffff30,transparent 60%);
+  z-index:0;
+}
+
+.container{
+  text-align:center;
+  color:white;
+  z-index:2;
+  animation:popUp 1.5s ease;
+}
+
+h1{
+  font-size:3.2rem;
+  margin-bottom:15px;
+  text-shadow:0 5px 15px rgba(0,0,0,0.25);
+}
+
+p{
+  font-size:1.4rem;
+  line-height:1.6;
+  margin:20px 0 35px;
+}
+
+.buttons{
+  margin-top:20px;
+}
+
+button{
+  padding:15px 34px;
+  font-size:1.15rem;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s ease;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+.yes{
+  background:white;
+  color:#ff4b6e;
+}
+
+.no{
+  background:#ff4b6e;
+  color:white;
+}
+
+button:hover{
+  transform:translateY(-3px) scale(1.08);
+}
+
+#message{
+  display:none;
+  margin-top:35px;
+  font-size:1.6rem;
+  animation:fadeInUp 1s ease forwards;
+}
+
+/* hearts */
+.heart{
+  position:absolute;
+  width:18px;
+  height:18px;
+  background:#ff4b6e;
+  transform:rotate(45deg);
+  animation:float 6s linear infinite;
+  opacity:0.9;
+}
+
+.heart::before,
+.heart::after{
+  content:'';
+  position:absolute;
+  width:18px;
+  height:18px;
+  background:#ff4b6e;
+  border-radius:50%;
+}
+
+.heart::before{
+  top:-9px;
+  left:0;
+}
+
+.heart::after{
+  left:-9px;
+  top:0;
+}
+
+/* animations */
+@keyframes float{
+  0%{
+    bottom:-10%;
+    opacity:1;
+    transform:translateX(0) rotate(45deg) scale(1);
+  }
+  100%{
+    bottom:110%;
+    opacity:0;
+    transform:translateX(80px) rotate(45deg) scale(1.3);
+  }
+}
+
+@keyframes popUp{
+  from{opacity:0; transform:scale(0.9);}
+  to{opacity:1; transform:scale(1);}
+}
+
+@keyframes fadeInUp{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>💖 Happy Propose Day 💖</h1>
+
+  <p id="question">
+    Somewhere between our laughs and conversations,<br>
+    my heart quietly chose you ❤️
+  </p>
+
+  <div class="buttons">
+    <button class="yes" onclick="yesClick()">Yes 💍</button>
+    <button class="no" onclick="noClick()">No 🙈</button>
+  </div>
+
+  <div id="message">
+    You just made my world brighter 🌸<br>
+    I promise to cherish you, always 💕
+  </div>
+</div>
+
+<script>
+const question = document.getElementById("question");
+const message  = document.getElementById("message");
+
+function yesClick(){
+  message.style.display = "block";
+  question.innerHTML = "I knew my heart was right about you 💖";
+}
+
+function noClick(){
+  question.innerHTML = "Are you sure? 🥺<br>Because my heart says yes…";
+}
+
+// floating hearts
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+4)+"s";
+  heart.style.opacity=Math.random();
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),7000);
+},350);
+</script>
+
+</body>
+</html>
